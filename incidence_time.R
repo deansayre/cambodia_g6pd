@@ -1,6 +1,9 @@
-
 library(janitor)
 library(linelist)
+
+# Sorry this one is sort of a mess; cobbled together a few data sources that I was too lazy to change 
+# (I would have if this were to be used for anything else. In fact I can't imagine that anyone is reading this now.)
+
 annual <- rio::import("mme_epi.xlsx") %>%
   clean_data(guess_dates = F) %>% 
   t() %>% 
