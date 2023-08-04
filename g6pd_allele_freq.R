@@ -12,7 +12,7 @@ pv1 <- pv
 pv1[pv < 0] <- 0
 
 
-cols <- colorRampPalette(c("white", "black"), bias = 10)(5)
+cols <- colorRampPalette(c("white", "black"))(20)
 cols_mal <- colorRampPalette(c("white", "#6F5E33"), bias = 10)(5)
 
 data("World")
@@ -20,7 +20,7 @@ data("World")
 g6pd_globe <- tm_shape(World)+
   tm_fill(col = "grey50")+
   tm_shape(g6pd_global)+
-  tm_raster(style = "cont", palette = cols)+
+  tm_raster(style = "cont", palette = "inferno")+
   tm_shape(World)+
   tm_borders()+
   tm_layout(frame = FALSE, 
@@ -28,7 +28,7 @@ g6pd_globe <- tm_shape(World)+
             legend.show = FALSE)
 
 g6pd_globe_leg <- tm_shape(g6pd_global)+
-  tm_raster(style = "cont", palette = cols)+
+  tm_raster(style = "cont", palette = "inferno")+
   tm_layout(frame = FALSE, 
             legend.only = TRUE)
 
