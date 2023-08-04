@@ -12,12 +12,13 @@ pv1 <- pv
 pv1[pv < 0] <- 0
 
 
-cols <- colorRampPalette(c("white", "#7d3834"), bias = 10)(5)
+cols <- colorRampPalette(c("white", "black"), bias = 10)(5)
 cols_mal <- colorRampPalette(c("white", "#6F5E33"), bias = 10)(5)
 
+data("World")
 
 g6pd_globe <- tm_shape(World)+
-  tm_fill(col = "white")+
+  tm_fill(col = "grey50")+
   tm_shape(g6pd_global)+
   tm_raster(style = "cont", palette = cols)+
   tm_shape(World)+
@@ -31,7 +32,6 @@ g6pd_globe_leg <- tm_shape(g6pd_global)+
   tm_layout(frame = FALSE, 
             legend.only = TRUE)
 
-data("World")
 
 pf_globe <- tm_shape(pf)+
   tm_raster(style = "cont", palette = cols_mal)+
@@ -64,4 +64,3 @@ figs <- list(g6pd_globe, g6pd_globe_leg,
 walk2(figs, names(figs), ~tmap_save(tm = .x, filename = paste0(getwd(), "/", .y, 
                                                                ".png"),
                                     dpi = 700))
-
