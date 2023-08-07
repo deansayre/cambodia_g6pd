@@ -31,6 +31,7 @@ b1 <- b %>%
   mutate(frac_spec = g6pd_ipc_spectro/amm_spec) %>% 
   filter(frac_spec <3) 
 
+
 scatter <- function(df, spec_thresh, poc_thresh, xcol, ycol, 
                     metric){
   
@@ -204,7 +205,6 @@ scatter4 <- scatter_dual(b1, 0.7, poc_thresh = 6, xcol = FALSE, ycol = TRUE)
 
 scatter_list <- list(scatter1, scatter2, scatter3, scatter4)
 
-scatter_list[[1]]
 
 walk2(scatter_list, list("scatter1", "scatter2", "scatter3", "scatter4"), 
       ~ggsave(filename = paste0(here::here(.y), ".png"), .x, 
